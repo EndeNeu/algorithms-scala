@@ -1,7 +1,5 @@
 package com.ebusiello.algorithms.search
 
-import scala.collection.SeqLike
-
 object BinarySearch {
 
   def binarySearch[T](collection: Seq[T], value: T)(implicit ordering: Ordering[T]): Int = {

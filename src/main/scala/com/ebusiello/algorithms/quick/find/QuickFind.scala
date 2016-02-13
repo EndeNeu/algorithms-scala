@@ -1,11 +1,11 @@
 package com.ebusiello.algorithms.quick.find
 
-import com.ebusiello.algorithms.quick.IndexValidator
+import com.ebusiello.algorithms.quick.QuickGeneric
 
-class QuickFind(val length: Int) extends IndexValidator {
+class QuickFind(val length: Int) extends QuickGeneric {
 
   // initialize the array
-  val nodes = new Array[Int](length)
+  private val nodes = new Array[Int](length)
   for(i <-0 until length) nodes(i) = i
 
   /**
@@ -15,7 +15,7 @@ class QuickFind(val length: Int) extends IndexValidator {
     if(isIndexValid(i) && isIndexValid(j))
       nodes(i) == nodes(j)
     else
-      throw new IndexOutOfBoundsException("Index out of bound.")
+      throwIndexOutOfBound
 
   /**
     * Change all the values equal to the one at position i to the value at position j

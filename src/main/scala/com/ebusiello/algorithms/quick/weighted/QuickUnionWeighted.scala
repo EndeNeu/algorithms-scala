@@ -1,12 +1,12 @@
 package com.ebusiello.algorithms.quick.weighted
 
-import com.ebusiello.algorithms.quick.IndexValidator
+import com.ebusiello.algorithms.quick.QuickGeneric
 
-class QuickUnionWeighted(val length: Int) extends IndexValidator {
+class QuickUnionWeighted(val length: Int) extends QuickGeneric {
 
   // initialize the array
-  val nodes = new Array[Int](length)
-  val sizes = new Array[Int](length)
+  private val nodes = new Array[Int](length)
+  private val sizes = new Array[Int](length)
   for (i <- 0 until length) nodes(i) = i
   for (i <- 0 until length) sizes(i) = 1
 
@@ -14,7 +14,8 @@ class QuickUnionWeighted(val length: Int) extends IndexValidator {
     * Two connected nodes have the same root.
     */
   def isConnected(i: Int, j: Int): Boolean =
-    isIndexValid(i) && isIndexValid(j) && findRoot(i) == findRoot(j)
+    if(isIndexValid(i) && isIndexValid(j))findRoot(i) == findRoot(j)
+    else throwIndexOutOfBound
 
   private def findRoot(i: Int): Int = {
     val valueAtI = nodes(i)
@@ -45,5 +46,6 @@ class QuickUnionWeighted(val length: Int) extends IndexValidator {
         sizes(rootAtI) += sizes(rootAtJ)
       }
     }
+    else throwIndexOutOfBound
   }
 }
