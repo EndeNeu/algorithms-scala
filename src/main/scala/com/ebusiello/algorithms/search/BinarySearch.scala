@@ -9,7 +9,7 @@ object BinarySearch {
       val middle = coll(middleIndex)
       if(middle == value) middleIndex
       //else if the value is smaller than the middle iterate the first part of the list and reset the index sum param.
-      else if (ordering.gt(middle, value)) search(collection.slice(0, middleIndex), value, 0)
+      else if (ordering.gt(middle, value)) search(collection.slice(0, middleIndex), value, indexAcc)
       // else iterate the right part and use the index of the middle element as starting point.
       else search(collection.slice(middleIndex, collectionLength), value, indexAcc + middleIndex)
     }
